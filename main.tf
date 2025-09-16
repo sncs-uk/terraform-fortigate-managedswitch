@@ -155,3 +155,19 @@ resource fortios_json_generic_api ports {
   method   = "PUT"
   json     = jsonencode(each.value.port)
 }
+
+resource fortios_switchcontroller_switchgroup groups {
+  for_each              = { for group in try(local.switches_yaml.groups, []) : group.name => group }
+
+  name                  = each.key
+  description           = try(each.value.description, null)
+  fortilink             = try(each.value.fortilink, null)
+  vdomparam             = try(each.value.vdomparam, null)
+
+  dynamic members {
+    for_each          = { for switch in each.value.members : switch => switch }
+    content {
+      switch_id       = members.value
+    }
+  }
+}
