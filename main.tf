@@ -26,7 +26,7 @@ locals {
 
 
 resource fortios_switchcontroller_managedswitch switches {
-  for_each                      = { for name, switch in local.switches_yaml.switches : name => switch }
+  for_each                      = { for name, switch in try(local.switches_yaml.switches, []) : name => switch }
 
   switch_id                     = each.key
   sn                            = each.value.sn
