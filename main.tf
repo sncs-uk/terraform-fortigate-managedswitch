@@ -11,7 +11,7 @@ terraform {
   }
 }
 locals {
-  switches_yaml  = fileexists("${var.config_path}/managed-switches.yaml") ? yamldecode(file("${var.config_path}/managed-switches.yaml")) : {}
+  switches_yaml  = fileexists("${var.config_path}/managed-switches.yaml") ? yamldecode(file("${var.config_path}/managed-switches.yaml")) : object({})
 
 
   ports = flatten([
