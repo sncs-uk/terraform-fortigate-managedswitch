@@ -16,7 +16,7 @@ locals {
 
   ports = flatten([
     for switchname, switch in try(local.switches_yaml.switches, []) : [
-      for port in switch.ports : {
+      for port in try(switch.ports, []) : {
         switch              = switchname
         port                = port
       }
