@@ -16,8 +16,9 @@ locals {
 
   ports = flatten([
     for switchname, switch in try(local.switches_yaml.switches, []) : [
-      for port in try(switch.ports, []) : {
+      for port_name, port in try(switch.ports, []) : {
         switch              = switchname
+        port_name           = port_name
         port                = port
       }
     ]
@@ -150,8 +151,8 @@ resource fortios_switchcontroller_managedswitch switches {
 
 
 resource fortios_json_generic_api ports {
-  for_each = { for port in local.ports : "${port.switch}_${port.port.port_name}" => port }
-  path     = "/api/v2/cmdb/switch-controller/managed-switch/${each.value.switch}/ports/${each.value.port.port_name}"
+  for_each = { for port in local.ports : "${port.switch}_${port.port_name}" => port }
+  path     = "/api/v2/cmdb/switch-controller/managed-switch/${each.value.switch}/ports/${each.value.port_name}"
   method   = "PUT"
   json     = jsonencode(each.value.port)
 }

@@ -23,6 +23,7 @@ No modules.
 |------|------|
 | [fortios_json_generic_api.ports](https://registry.terraform.io/providers/fortinetdev/fortios/latest/docs/resources/json_generic_api) | resource |
 | [fortios_switchcontroller_managedswitch.switches](https://registry.terraform.io/providers/fortinetdev/fortios/latest/docs/resources/switchcontroller_managedswitch) | resource |
+| [fortios_switchcontroller_switchgroup.groups](https://registry.terraform.io/providers/fortinetdev/fortios/latest/docs/resources/switchcontroller_switchgroup) | resource |
 
 ## Inputs
 
