@@ -30,6 +30,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_config_path"></a> [config\_path](#input\_config\_path) | Path to base configuration directory | `string` | n/a | yes |
+| <a name="input_force_update"></a> [force\_update](#input\_force\_update) | Whether or not to force update the ports using a timestamp QS | `bool` | `false` | no |
 
 ## Outputs
 

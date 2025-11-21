@@ -23,6 +23,8 @@ locals {
       }
     ]
   ])
+
+  suffix = var.force_update ? "?timestamp=${timestamp()}" : ""
 }
 
 
@@ -152,7 +154,7 @@ resource fortios_switchcontroller_managedswitch switches {
 
 resource fortios_json_generic_api ports {
   for_each = { for port in local.ports : "${port.switch}_${port.port_name}" => port }
-  path     = "/api/v2/cmdb/switch-controller/managed-switch/${each.value.switch}/ports/${each.value.port_name}?timestamp=${timestamp()}"
+  path     = "/api/v2/cmdb/switch-controller/managed-switch/${each.value.switch}/ports/${each.value.port_name}${local.suffix}"
   method   = "PUT"
   json     = jsonencode(each.value.port)
 }
