@@ -4,9 +4,11 @@
  * This terraform module configures managed switches on a FortiGate firewall
  */
 terraform {
+  required_version = ">= 1.32.0"
   required_providers {
     fortios = {
       source  = "fortinetdev/fortios"
+      version = ">= 1.22.0"
     }
   }
 }
