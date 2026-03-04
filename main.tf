@@ -147,7 +147,7 @@ resource "fortios_switchcontroller_managedswitch" "switches" {
     ignore_changes = [
       tdr_supported,
       directly_connected,
-      dynamically_discovered
+      dynamically_discovered,
       staged_image_version
     ]
   }
