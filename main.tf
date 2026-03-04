@@ -148,6 +148,7 @@ resource "fortios_switchcontroller_managedswitch" "switches" {
       tdr_supported,
       directly_connected,
       dynamically_discovered
+      staged_image_version
     ]
   }
 
